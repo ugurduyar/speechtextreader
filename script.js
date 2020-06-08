@@ -111,6 +111,10 @@ function speakText() {
   speechSynthesis.speak(message);
 }
 
+function setVoice(e) {
+  message.voice = voices.find((voice) => voice.name === e.target.value);
+}
+
 speechSynthesis.addEventListener("voiceschanged", getVoices);
 
 // Toggle textbox
@@ -121,5 +125,8 @@ toggleBtn.addEventListener("click", () =>
 closeBtn.addEventListener("click", () =>
   document.getElementById("text-box").classList.remove("show")
 );
+
+//Change voice
+voicesSelect.addEventListener("change", setVoice);
 
 getVoices();
